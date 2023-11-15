@@ -25,12 +25,6 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    alloted_children:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Child'
-        }
-    ],
     zone:{
         type:String
     },
@@ -45,6 +39,9 @@ const userSchema=mongoose.Schema({
     },
     avatar:{
         type:Buffer
+    },
+    CVDScore:{
+        type:Number
     }
     
 },{

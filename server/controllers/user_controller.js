@@ -165,29 +165,7 @@ module.exports.update = async function (req, res) {
         res.status(200).send("error in updating user");
     }
 }
-module.exports.getWorkerbyId = async function (req, res) {
-    try {
-        let worker = await User.findOne({ user_id: req.body.user_id }).populate({
-            path: 'alloted_children',
-            select: '-uploaded_documents'
-        });
-        res.status(200).json({
-            response: worker
-        })
-    } catch (err) {
-        return res.status(200).send("error in getting worker by id");
-    }
-}
-// module.exports.getManagerbyId=async function(req,res){
-//     try{
-//         let manager=await User.findOne({user_id:req.body.user_id, category:'manager'}).populate('alloted_children');
-//         res.send(200).json({
-//             response:manager
-//         })
-//     }catch(err){
-//         return res.status(200).send("error in getting manager by id");
-//     }
-// }
+
 
 
 module.exports.imageUpload = async function (req, res) {
@@ -231,68 +209,6 @@ module.exports.deleteImage = async function (req, res) {
     }
 }
 
-module.exports.getUnSeenMessages = async function (req, res) {
-    try {
-        let messages = await Message.find({ to_user: req.body.to_user_id, seen: 0 });
-        return res.status(200).json({
-            response: messages
-        })
-    } catch (err) {
-        return res.status(200).send("error in gettng seen messages");
-    }
-}
-module.exports.getMessages = async function (req, res) {
-    try {
-        let messages = await Message.find({ to_user: req.body.to_user_id }).populate({
-            path: 'from_user to_user',
-            select: 'name category'
-        });
-        return res.status(200).json({
-            response: messages
-        })
-    } catch (err) {
-        return res.status(200).send("error in getting messages");
-    }
-}
-module.exports.getMessagebyId = async function (req, res) {
-    try {
-        let message = await Message.findById(req.body.messageId).populate({
-            path: 'from_user to_user',
-            select: 'name category'
-        });
-        message.seen = 1;
-        message.save();
-        return res.status(200).json({
-            response: message
-        })
-    } catch (err) {
-        return res.status(200).send("error in getting messages by id");
-    }
-}
-module.exports.markAllSeen = async function (req, res) {
-    try {
-        let messages = await Message.find({ to_user: req.body.to_user_id });
-        // console.log(messages);
-        for (let u of messages) {
-            u.seen = 1;
-            u.save();
-        }
-        return res.status(200).json({
-            response: messages
-        })
-    } catch (err) {
-        console.log(err);
-        return res.status(200).send("error in marking all messages as seen");
-    }
-}
-module.exports.deleteAllMsg = async function (req, res) {
-    try {
-        let messages = await Message.deleteMany({ to_user: req.body.to_user_id });
-        return res.status(200).send("all messages are deleted");
-    } catch (err) {
-        return res.status(200).send("error in deleting all messages");
-    }
-}
 
 module.exports.sendResetMail = async (req, res) => {
     try {
@@ -334,10 +250,6 @@ module.exports.sendResetMail = async (req, res) => {
 module.exports.csvDownload = async function (req, res) {
     try {
         let users = await User.find({})
-            .populate({
-                path: 'alloted_children',
-                select: 'childName'
-            })
             .select('-password -avatar')
         //   console.log(users);
         const csvData = [];
@@ -346,16 +258,15 @@ module.exports.csvDownload = async function (req, res) {
             'Name',
             'Email',
             'category',
-            'Allocated Children',
             'Zone',
             'Address',
             'Aadhar Card No.',
-            'contact No'
+            'contact No',
+            'CVDScore'
         ];
         csvData.push(header);
 
         users.forEach(user => {
-            const allocatedChildren = user.alloted_children.map(child => child.childName).join(', ');
             const record = [
                 user.user_id,
                 user.name,
@@ -365,7 +276,8 @@ module.exports.csvDownload = async function (req, res) {
                 user.zone,
                 user.address,
                 user.aadharCardNo,
-                user.contactNo
+                user.contactNo,
+                user.CVDScore
             ];
             csvData.push(record);
         });
@@ -385,19 +297,3 @@ module.exports.csvDownload = async function (req, res) {
     }
 };
 
-module.exports.getAllocatedChildren = async function (req, res) {
-    try {
-        let user = await User.findOne({ user_id: req.body.user_id })
-            .populate({
-                path: 'alloted_children',
-                select: 'child_id childName caseStatus shelterHome'
-            })
-            .select('alloted_children');
-        return res.status(200).json({
-            response: user
-        })
-    } catch (err) {
-        console.log(err);
-        return res.status(200).send("error in getting all allocated children");
-    }
-}
