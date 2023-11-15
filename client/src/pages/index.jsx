@@ -6,3 +6,4 @@
 // export { default as EditProfile } from "./EditProfile";
 // export { default as Calendar } from "./Calendar";
 export { default as Login } from "./Login";
+export { default as SignUp } from "./SignUp";

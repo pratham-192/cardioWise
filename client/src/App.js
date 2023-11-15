@@ -3,19 +3,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Analytics, ChildAlloted, Employees, Login, Cases, Kanban, EditProfile } from './pages';
+import { Analytics, ChildAlloted, Employees, Login, Cases, Kanban, EditProfile ,SignUp} from './pages';
 import './App.css';
 import './i18n'
 
 import { useStateContext } from './Contexts/ContextProvider';
-import ChildDetails from './pages/ChildDetails';
-import WorkerDetails from './pages/WorkerDetails';
-import FlowManagement from './pages/FlowManagement';
-import { Calendar } from './pages';
-import Messages from './pages/Messages';
-import ForgotPassword from './pages/ForgotPassword';
-import ManageData from './pages/ManageData';
-import ChatBot from './pages/ChatBot';
+// import ChildDetails from './pages/ChildDetails';
+// import WorkerDetails from './pages/WorkerDetails';
+// import FlowManagement from './pages/FlowManagement';
+// import { Calendar } from './pages';
+// import Messages from './pages/Messages';
+// import ForgotPassword from './pages/ForgotPassword';
+// import ManageData from './pages/ManageData';
+// import ChatBot from './pages/ChatBot';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -72,22 +72,23 @@ const App = () => {
               {themeSettings && (<ThemeSettings />)}
 
               <Routes>
-                <Route path="/" element={(<Messages />)} />
-                <Route path="/calendar" element={(<Calendar />)} />
+                {/* <Route path="/" element={(<Messages />)} /> */}
+                {/* <Route path="/calendar" element={(<Calendar />)} /> */}
                 <Route path="/login" element={(<Login />)} />
-                <Route path="/chat-bot" element={(<ChatBot />)} />
-                <Route path="/forgot-password" element={(<ForgotPassword />)} />
-                <Route path="/analytics" element={(<Analytics />)} />
-                <Route path="/workers" element={<Employees />} />
-                <Route path="/worker-details" element={<WorkerDetails />} />
-                <Route path="/manage-data" element={<ManageData />} />
-                <Route path="/cases" element={<Cases />} />
-                <Route path="/progress" element={<Kanban />} />
-                <Route path="/edit-profile" element={<EditProfile />} />
-                <Route path="/child-alloted" element={<ChildAlloted />} />
-                <Route path="/child-details" element={<ChildDetails />} />
-                <Route path="/flow-management" element={<FlowManagement />} />
-                <Route path="/messages" element={<Messages />} />
+                <Route path="/signup" element={(<SignUp />)} />
+                {/* <Route path="/chat-bot" element={(<ChatBot />)} /> */}
+                {/* <Route path="/forgot-password" element={(<ForgotPassword />)} /> */}
+                {/* <Route path="/analytics" element={(<Analytics />)} /> */}
+                {/* <Route path="/workers" element={<Employees />} /> */}
+                {/* <Route path="/worker-details" element={<WorkerDetails />} /> */}
+                {/* <Route path="/manage-data" element={<ManageData />} /> */}
+                {/* <Route path="/cases" element={<Cases />} /> */}
+                {/* <Route path="/progress" element={<Kanban />} /> */}
+                {/* <Route path="/edit-profile" element={<EditProfile />} /> */}
+                {/* <Route path="/child-alloted" element={<ChildAlloted />} /> */}
+                {/* <Route path="/child-details" element={<ChildDetails />} /> */}
+                {/* <Route path="/flow-management" element={<FlowManagement />} /> */}
+                {/* <Route path="/messages" element={<Messages />} /> */}
               </Routes>
             </div>
             <Footer />

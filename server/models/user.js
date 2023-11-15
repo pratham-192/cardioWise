@@ -4,17 +4,12 @@ const path=require('path');
 
 
 const userSchema=mongoose.Schema({
-    user_id:{
-        type:String,
-        required:true,
-        unique:true
-    },
     name:{
         type:String,
     },
     email:{
         type:String,
-        // required:true,
+        required:true,
         unique:true
     },
     password:{

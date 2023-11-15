@@ -6,39 +6,33 @@ import { publicRoute } from "../Contexts/ProtectedRoute";
 import bal_asha_team from "../assets/bal_asha_team.png";
 import { useTranslation } from "react-i18next";
 
-function Login() {
+function SignUp() {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
+ const [name, setName] = useState("");
   const [err, seterr] = useState("");
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const loginHandler = async () => {
+  const SignUpHandler = async () => {
     const response = await axios.post(
-      `http://localhost:3000/users/createSession?email=${email}&password=${pass}`,
+      `http://localhost:3000/users/create`,
       {
-        category: "admin",
+        category: "user",
+        name:name,
+        email:email,
+        password:pass
       }
     );
     if (response.data.email) {
       localStorage.setItem("userDetails", JSON.stringify(response.data));
       navigate("/");
-    }
-    const response2 = await axios.post(
-      `http://localhost:3000/users/createSession?email=${email}&password=${pass}`,
-      {
-        category: "user",
-      }
-    );
-    if (response2.data.email) {
-      localStorage.setItem("userDetails", JSON.stringify(response2.data));
-      navigate("/");
     }else {
-      seterr("email and password doesn't match");
-      return;
-    }
-  };
-
+        seterr("User already exists");
+        return;
+      }
+    
+  }
   return (
     <div className="h-screen w-screen fixed inset-0 bg-white">
       <div className="h-screen w-screen flex justify-center items-center sm:grid sm:grid-cols-3">
@@ -58,6 +52,24 @@ function Login() {
                 {t("Sign in to your account")}
               </h1>
               <div className="space-y-4 md:space-y-6">
+              <div>
+                  <label
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    {t("Name")}
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="abcd"
+                    value={name}
+                    required=""
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
                 <div>
                   <label
                     htmlFor="email"
@@ -70,7 +82,7 @@ function Login() {
                     name="email"
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="1234abcd"
+                    placeholder="abcd@gmail.com"
                     value={email}
                     required=""
                     onChange={(e) => setemail(e.target.value)}
@@ -113,14 +125,7 @@ function Login() {
                 <button
                   type="submit"
                   className="w-full text-slate-100 bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                  onClick={() => loginHandler()}
-                >
-                  {t("Sign in")}
-                </button>
-                <button
-                  type="text"
-                  className="w-full text-slate-100 bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                  onClick={() => navigate('/signup')}
+                  onClick={() => SignUpHandler()}
                 >
                   {t("Sign Up")}
                 </button>
@@ -133,4 +138,4 @@ function Login() {
   );
 }
 
-export default publicRoute(Login);
+export default publicRoute(SignUp);

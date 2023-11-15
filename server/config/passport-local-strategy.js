@@ -5,13 +5,13 @@ const bcrypt = require('bcrypt');
 
 //authentication using passport
 passport.use(new LocalStrategy({
-    usernameField: 'user_id',
+    usernameField: 'email',
     passReqToCallback: true//it allows us to use req as the first argument in the callback function
 },
-    async function (req, user_id, password, done) {
+    async function (req, email, password, done) {
         try {
             //find the user and establish the identity
-            let user = await User.findOne({ user_id: user_id });
+            let user = await User.findOne({ email: email });
 
             if (!user || req.body.category != user.category) {
                 return done(null, false, { message: 'Incorrect username' });//it means that there is no error but user is not found

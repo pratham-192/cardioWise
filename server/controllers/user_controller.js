@@ -15,20 +15,20 @@ module.exports.profile = function (req, res) {
 
 
 module.exports.sendmail = async (req, res) => {
-    const { password, name, email, user_id } = req.body;
+    const { password, name, email } = req.body;
 
     const transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
             user: "prathammehtani23@gmail.com",
-            pass: "iqavnovejfbaogjl"
+            pass: "tvxwzlxkorfqqnqo"
         }
     });
     const mailOptions = {
         from: "prathammehtani23@gmail.com",
         to: email,
         subject: "Welcome to Our Application",
-        text: `Hello ${name},\n\nWelcome to our application! Your account has been created successfully.\n\nYour login credentials:\nUser-Id: ${user_id}\nPassword: ${password}\n\nThank you!`,
+        text: `Hello ${name},\n\nWelcome to our application! Your account has been created successfully.\n\nYour login credentials:\nEmail: ${email}\nPassword: ${password}\n\nThank you!`,
     };
     try {
         await transporter.sendMail(mailOptions);
@@ -42,10 +42,9 @@ module.exports.sendmail = async (req, res) => {
 
 module.exports.create = async function (req, res) {
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         if (!user) {
             let newuser = await User.create({
-                user_id: req.body.user_id,
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
@@ -60,12 +59,11 @@ module.exports.create = async function (req, res) {
                 password: req.body.password,
                 name: req.body.name,
                 email: req.body.email,
-                user_id: req.body.user_id
             });
             const hashedPassword = await bcrypt.hash(req.body.password, 10);
             newuser.password = hashedPassword;
             await newuser.save();
-            return res.status(200).json({ response: newuser });
+            return res.status(200).send(newuser);
         } else {
             return res.status(200).send("User already exists");
         }
@@ -144,9 +142,8 @@ module.exports.update = async function (req, res) {
     // return res.status(404).send("password doesn't matches");
     // }
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         if (user) {
-            user.user_id = req.body.user_id;
             user.name = req.body.name;
             user.email = req.body.email;
             user.category = req.body.category;
@@ -170,7 +167,7 @@ module.exports.update = async function (req, res) {
 
 module.exports.imageUpload = async function (req, res) {
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         if (!user) return res.status(200).send("user doesn't exists");
         user.avatar = req.file.buffer;
         user.save();
@@ -183,7 +180,7 @@ module.exports.imageUpload = async function (req, res) {
 }
 module.exports.getImage = async function (req, res) {
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         if (user.avatar) {
             return res.status(200).json({
                 response: user.avatar
@@ -200,7 +197,7 @@ module.exports.getImage = async function (req, res) {
 
 module.exports.deleteImage = async function (req, res) {
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         user.avatar = null;
         user.save();
         return res.status(200).send("profile image deleted successfully");
@@ -212,7 +209,7 @@ module.exports.deleteImage = async function (req, res) {
 
 module.exports.sendResetMail = async (req, res) => {
     try {
-        let user = await User.findOne({ user_id: req.body.user_id });
+        let user = await User.findOne({ email: req.body.email });
         if (user) {
             if (!user.email) return res.status(200).send("email doesn't exists");
             // console.log(user.email);
@@ -225,14 +222,14 @@ module.exports.sendResetMail = async (req, res) => {
                 service: "Gmail",
                 auth: {
                     user: "prathammehtani23@gmail.com",
-                    pass: "iqavnovejfbaogjl"
+                    pass: "tvxwzlxkorfqqnqo"
                 }
             });
             const mailOptions = {
                 from: "prathammehtani23@gmail.com",
                 to: user.email,
                 subject: "Reset Password",
-                text: `Hello ${user.name},\n\nYou have your new password .\n\nYour login credentials:\nUser-Id: ${user.user_id}\nPassword: ${newPassword}\n\nThank you!`,
+                text: `Hello ${user.name},\n\nYou have your new password .\n\nYour login credentials:\nEmail: ${user.email}\nPassword: ${newPassword}\n\nThank you!`,
             };
             await transporter.sendMail(mailOptions);
             res.status(200).json({ message: "User created and email sent successfully" });
