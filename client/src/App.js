@@ -76,6 +76,7 @@ const App = () => {
                 {/* <Route path="/calendar" element={(<Calendar />)} /> */}
                 <Route path="/login" element={(<Login />)} />
                 <Route path="/signup" element={(<SignUp />)} />
+                <Route path="/edit-profile" element={<EditProfile />} />
                 {/* <Route path="/chat-bot" element={(<ChatBot />)} /> */}
                 {/* <Route path="/forgot-password" element={(<ForgotPassword />)} /> */}
                 {/* <Route path="/analytics" element={(<Analytics />)} /> */}
@@ -84,7 +85,7 @@ const App = () => {
                 {/* <Route path="/manage-data" element={<ManageData />} /> */}
                 {/* <Route path="/cases" element={<Cases />} /> */}
                 {/* <Route path="/progress" element={<Kanban />} /> */}
-                {/* <Route path="/edit-profile" element={<EditProfile />} /> */}
+                
                 {/* <Route path="/child-alloted" element={<ChildAlloted />} /> */}
                 {/* <Route path="/child-details" element={<ChildDetails />} /> */}
                 {/* <Route path="/flow-management" element={<FlowManagement />} /> */}
