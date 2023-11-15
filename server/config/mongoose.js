@@ -1,8 +1,6 @@
 
-
-
 const mongoose=require('mongoose');
-mongoose.connect('mongodb+srv://admin:abcdefgh@cluster0.zshjdva.mongodb.net/',{
+mongoose.connect('mongodb+srv://admin:abcdefgh@cluster0.qpmrbfs.mongodb.net/?retryWrites=true&w=majority',{
     useNewUrlParser: true,
   useUnifiedTopology: true,
 });

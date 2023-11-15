@@ -47,7 +47,7 @@ app.use(session({
     },
     store: MongoStore.create(
         {
-            mongoUrl: 'mongodb+srv://admin:abcdefgh@cluster0.zshjdva.mongodb.net/',
+            mongoUrl: 'mongodb+srv://admin:abcdefgh@cluster0.qpmrbfs.mongodb.net/?retryWrites=true&w=majority',
             autoRemove: 'disabled'
 
         },
