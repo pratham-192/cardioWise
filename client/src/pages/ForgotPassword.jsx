@@ -6,7 +6,7 @@ import { publicRoute } from "../Contexts/ProtectedRoute";
 import { useTranslation } from "react-i18next";
 
 function Login() {
-  const [userid, setuserid] = useState("");
+  const [email, setemail] = useState("");
   const [err, seterr] = useState("");
   const [success, setsuccess] = useState("");
   const navigate = useNavigate();
@@ -16,11 +16,11 @@ function Login() {
     const response = await axios.post(
       `http://localhost:3000/users/reset_password`,
       {
-        user_id: userid,
+        email: email,
       }
     );
     if (!response.data.message) {
-      seterr("No user with this used id exists");
+      seterr("No user with this email exists");
       setsuccess("");
     } else {
       setsuccess("Mail sent succcesfully redirecting to login page...");
@@ -52,17 +52,17 @@ function Login() {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    {t("User Id")}
+                    {t("Email")}
                   </label>
                   <input
                     type="text"
-                    name="userid"
-                    id="userid"
+                    name="email"
+                    id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="1234abcd"
-                    value={userid}
+                    placeholder="abcd@gmail.com"
+                    value={email}
                     required=""
-                    onChange={(e) => setuserid(e.target.value)}
+                    onChange={(e) => setemail(e.target.value)}
                   />
                 </div>
                 <div className="text-red-500 text-sm">{err}</div>

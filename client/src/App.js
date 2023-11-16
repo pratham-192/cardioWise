@@ -13,7 +13,7 @@ import { useStateContext } from './Contexts/ContextProvider';
 // import FlowManagement from './pages/FlowManagement';
 // import { Calendar } from './pages';
 // import Messages from './pages/Messages';
-// import ForgotPassword from './pages/ForgotPassword';
+import ForgotPassword from './pages/ForgotPassword';
 // import ManageData from './pages/ManageData';
 // import ChatBot from './pages/ChatBot';
 
@@ -78,7 +78,7 @@ const App = () => {
                 <Route path="/signup" element={(<SignUp />)} />
                 <Route path="/edit-profile" element={<EditProfile />} />
                 {/* <Route path="/chat-bot" element={(<ChatBot />)} /> */}
-                {/* <Route path="/forgot-password" element={(<ForgotPassword />)} /> */}
+                <Route path="/forgot-password" element={(<ForgotPassword />)} />
                 {/* <Route path="/analytics" element={(<Analytics />)} /> */}
                 {/* <Route path="/workers" element={<Employees />} /> */}
                 {/* <Route path="/worker-details" element={<WorkerDetails />} /> */}
