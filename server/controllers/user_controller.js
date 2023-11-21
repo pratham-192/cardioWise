@@ -13,7 +13,26 @@ module.exports.profile = function (req, res) {
     return res.status(200).send("profile page");
 }
 
-
+module.exports.getUserGoogle=async function(req,res){
+    try{
+        const user=await User.findOne({email:req.body.email});
+        if(user){
+            return res.status(200).send(user);
+        }
+        else{
+            let newuser = await User.create({
+                name: req.body.name,
+                email: req.body.email,
+                password: "abcd",
+                category: 'user',
+            });
+            return res.status(200).send(newuser);
+        }
+    }catch(err){
+        console.log(err)
+        return res.status(200).send("error in getting user");
+    }
+}
 module.exports.sendmail = async (req, res) => {
     const { password, name, email } = req.body;
 
