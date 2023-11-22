@@ -5,6 +5,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { publicRoute } from "../Contexts/ProtectedRoute";
 import bal_asha_team from "../assets/bal_asha_team.png";
 import { useTranslation } from "react-i18next";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function SignUp() {
   const [email, setemail] = useState("");
@@ -51,6 +54,38 @@ function SignUp() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 {t("Sign in to your account")}
               </h1>
+              <GoogleOAuthProvider clientId="76573299231-pjd4utiu7shkk8em0b4m8gpej0cfp4eo.apps.googleusercontent.com">
+              <GoogleLogin
+  onSuccess={async (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      console.log(decoded);
+
+      const response2 = await axios.post(
+        `http://localhost:3000/users/get_user_google`,
+        {
+          email: decoded.email,
+          name: decoded.given_name,
+        }
+      );
+      console.log(response2);
+      if (response2.data.email) {
+        localStorage.setItem("userDetails", JSON.stringify(response2.data));
+        navigate("/edit-profile");
+      } else {
+        seterr("email and password don't match");
+        return;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>
+
+                </GoogleOAuthProvider>
               <div className="space-y-4 md:space-y-6">
               <div>
                   <label

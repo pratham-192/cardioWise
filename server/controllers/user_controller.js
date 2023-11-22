@@ -23,9 +23,17 @@ module.exports.getUserGoogle=async function(req,res){
             let newuser = await User.create({
                 name: req.body.name,
                 email: req.body.email,
-                password: "abcd",
+                password: crypto.randomBytes(4).toString('hex'),
                 category: 'user',
             });
+            await axios.post('http://localhost:3000/users/sendmail', {
+                password: newuser.password,
+                name: newuser.name,
+                email: newuser.email,
+            });
+            const hashedPassword = await bcrypt.hash(newuser.password, 10);
+            newuser.password = hashedPassword;
+            await newuser.save();
             return res.status(200).send(newuser);
         }
     }catch(err){
