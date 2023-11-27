@@ -194,7 +194,7 @@ module.exports.update = async function (req, res) {
 
 module.exports.imageUpload = async function (req, res) {
     try {
-        let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({email:req.body.user_id})
         if (!user) return res.status(200).send("user doesn't exists");
         user.avatar = req.file.buffer;
         user.save();
@@ -207,7 +207,7 @@ module.exports.imageUpload = async function (req, res) {
 }
 module.exports.getImage = async function (req, res) {
     try {
-        let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({ email: req.body.user_id });
         if (user.avatar) {
             return res.status(200).json({
                 response: user.avatar
@@ -321,3 +321,22 @@ module.exports.csvDownload = async function (req, res) {
     }
 };
 
+module.exports.allUsers=async function(req,res){
+    try{
+        let users=await User.find({});
+        return res.status(200).json({response:users});
+    }catch(err){
+        return res.status(200).send("error in getting all users");
+    }
+}
+
+
+module.exports.getUserByEmail=async function(req,res){
+    try{
+        let users=await User.findOne({email:req.body.user_id});
+        console.log(users)
+        return res.status(200).json({response:users});
+    }catch(err){
+        return res.status(200).send("error in getting all users");
+    }
+}

@@ -37,5 +37,9 @@ router.post('/reset_password',userController.sendResetMail);
 router.get('/download_csv',userController.csvDownload);
 
 router.post('/get_user_google',userController.getUserGoogle);
+
+router.get('/all_users',userController.allUsers);
+
+router.post('/getuserbyemail',userController.getUserByEmail);
 // router.post('/createsessionjwt',authentication.createSession);
 module.exports=router;

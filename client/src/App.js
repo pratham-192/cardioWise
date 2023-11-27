@@ -9,7 +9,7 @@ import './i18n'
 
 import { useStateContext } from './Contexts/ContextProvider';
 // import ChildDetails from './pages/ChildDetails';
-// import WorkerDetails from './pages/WorkerDetails';
+import WorkerDetails from './pages/WorkerDetails';
 // import FlowManagement from './pages/FlowManagement';
 // import { Calendar } from './pages';
 // import Messages from './pages/Messages';
@@ -80,8 +80,8 @@ const App = () => {
                 {/* <Route path="/chat-bot" element={(<ChatBot />)} /> */}
                 <Route path="/forgot-password" element={(<ForgotPassword />)} />
                 {/* <Route path="/analytics" element={(<Analytics />)} /> */}
-                {/* <Route path="/workers" element={<Employees />} /> */}
-                {/* <Route path="/worker-details" element={<WorkerDetails />} /> */}
+                <Route path="/users" element={<Employees />} />
+                <Route path="/user-details" element={<WorkerDetails />} />
                 {/* <Route path="/manage-data" element={<ManageData />} /> */}
                 {/* <Route path="/cases" element={<Cases />} /> */}
                 {/* <Route path="/progress" element={<Kanban />} /> */}

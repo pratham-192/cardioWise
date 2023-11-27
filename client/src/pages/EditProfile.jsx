@@ -7,7 +7,8 @@ import { protectedRoute } from "../Contexts/ProtectedRoute";
 
 const EditProfile = () => {
   const currentuser = JSON.parse(localStorage.getItem("userDetails"));
-  const [userId, setuserId] = useState(currentuser.user_id);
+  const [userId, setuserId] = useState(currentuser.email);
+  console.log(userId)
   const [userName, setuserName] = useState(currentuser.name);
   const [userEmail, setuserEmail] = useState(currentuser.email);
   const [userCat, setuserCat] = useState(currentuser.category);
