@@ -41,5 +41,7 @@ router.post('/get_user_google',userController.getUserGoogle);
 router.get('/all_users',userController.allUsers);
 
 router.post('/getuserbyemail',userController.getUserByEmail);
+
+router.post('/cvd_prediction',userController.cvdPrediction);
 // router.post('/createsessionjwt',authentication.createSession);
 module.exports=router;

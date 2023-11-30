@@ -6,6 +6,8 @@ const crypto = require("crypto");
 const axios = require('axios');
 const fastcsv = require('fast-csv');
 const bcrypt = require('bcrypt');
+
+const CvdPrediction=require('../models/cvd');
 module.exports.profile = function (req, res) {
     // return res.render('user_profile', {
     //     title: 'User Profile'
@@ -334,9 +336,43 @@ module.exports.allUsers=async function(req,res){
 module.exports.getUserByEmail=async function(req,res){
     try{
         let users=await User.findOne({email:req.body.user_id});
-        console.log(users)
+        // console.log(users)
         return res.status(200).json({response:users});
     }catch(err){
         return res.status(200).send("error in getting all users");
+    }
+}
+module.exports.cvdPrediction=async function(req,res){
+    try{
+        const user = await User.findOne({email:req.body.userId});
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        // console.log(req.body)
+        let prediction=await CvdPrediction.create({
+            email:req.body.userId,
+            generalHealth: parseInt(req.body.generalHealth),
+            exercise: parseInt(req.body.exercise),
+            heartDisease: parseInt(req.body.heartDisease),
+            skinCancer: parseInt(req.body.skinCancer),
+            otherCancer: parseInt(req.body.otherCancer),
+            depression: parseInt(req.body.depression),
+            diabetes: parseInt(req.body.diabetes),
+            arthritis: parseInt(req.body.arthritis),
+            sex: parseInt(req.body.sex),
+            ageCategory: req.body.ageCategory,
+            smokingHistory: parseInt(req.body.smokingHistory),
+            checkup: parseInt(req.body.checkup),  
+            height: parseInt(req.body.height),
+            weight: parseInt(req.body.weight),
+            alcoholConsumption: parseInt(req.body.alcoholConsumption),
+            fruitConsumption: parseInt(req.body.fruitConsumption),
+            greenVegetablesConsumption: parseInt(req.body.greenVegetablesConsumption),
+            friedPotatoConsumption: parseInt(req.body.friedPotatoConsumption),
+        })
+        return res.status(200).json({response:prediction});
+    }catch(err){
+        console.log(err);
+        return res.status(200).send("error in getting prediction");
     }
 }

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Analytics, ChildAlloted, Employees, Login, Cases, Kanban, EditProfile ,SignUp} from './pages';
+import { Employees, Login,  EditProfile ,SignUp} from './pages';
 import './App.css';
 import './i18n'
 
@@ -16,6 +16,7 @@ import WorkerDetails from './pages/WorkerDetails';
 import ForgotPassword from './pages/ForgotPassword';
 // import ManageData from './pages/ManageData';
 // import ChatBot from './pages/ChatBot';
+import CvdPredictionForm from './pages/cvd';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -82,6 +83,7 @@ const App = () => {
                 {/* <Route path="/analytics" element={(<Analytics />)} /> */}
                 <Route path="/users" element={<Employees />} />
                 <Route path="/user-details" element={<WorkerDetails />} />
+                <Route path="/cvd" element={<CvdPredictionForm />} />
                 {/* <Route path="/manage-data" element={<ManageData />} /> */}
                 {/* <Route path="/cases" element={<Cases />} /> */}
                 {/* <Route path="/progress" element={<Kanban />} /> */}

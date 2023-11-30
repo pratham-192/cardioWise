@@ -117,7 +117,7 @@ const ThemeSettings = () => {
               हिंदी
             </label>
           </div>
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <input
               type="radio"
               id="hindi"
@@ -129,7 +129,7 @@ const ThemeSettings = () => {
             <label htmlFor="hindi" className="ml-2 text-md cursor-pointer">
               मराठी
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

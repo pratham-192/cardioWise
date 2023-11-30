@@ -451,7 +451,7 @@ export const links = [
       {
         name: 'analytics',
         icon: <TbDeviceDesktopAnalytics />,
-        allowed: ["admin"]
+        allowed: [""]
       },
     ],
   },
@@ -464,20 +464,25 @@ export const links = [
       //   icon: <AiOutlineShoppingCart />,
       // },
       {
-        name: 'workers',
+        name: 'users',
         icon: <IoMdContacts />,
-        allowed: ["admin", "case-manager"]
+        allowed: ["admin"]
       },
       {
-        name: 'cases',
-        icon: <RiContactsLine />,
-        allowed: ["admin", "case-manager"]
+        name: 'CVD',
+        icon: <IoMdContacts />,
+        allowed: ["admin","user"]
       },
-      {
-        name: 'child-alloted',
-        icon: <FaChild />,
-        allowed: ["worker"]
-      },
+      // {
+      //   name: 'cases',
+      //   icon: <RiContactsLine />,
+      //   allowed: ["admin", "case-manager"]
+      // },
+      // {
+      //   name: 'child-alloted',
+      //   icon: <FaChild />,
+      //   allowed: ["worker"]
+      // },
     ],
   },
   {
@@ -487,40 +492,40 @@ export const links = [
       //   name: 'calendar',
       //   icon: <AiOutlineCalendar />,
       // },
-      {
-        name: 'progress',
-        icon: <BsKanban />,
-        allowed: ["admin", "case-manager", "worker"]
-      },
+      // {
+      //   name: 'progress',
+      //   icon: <BsKanban />,
+      //   allowed: [ "case-manager", "worker"]
+      // },
       {
         name: 'chat-bot',
         icon: <BsRobot />,
-        allowed: ["case-manager", "worker"]
+        allowed: ["admin", "user"]
       },
+      // {
+      //   name: 'calendar',
+      //   icon: <SlCalender />,
+      //   allowed: ["admin", "case-manager", "worker"]
+      // },
+      // {
+      //   name: 'flow-management',
+      //   icon: <TiFlowChildren />,
+      //   allowed: ["admin"]
+      // },
+      // {
+      //   name: "manage-data",
+      //   icon: <BsDatabaseFill />,
+      //   allowed: ["admin"]
+      // },
       {
-        name: 'calendar',
-        icon: <SlCalender />,
-        allowed: ["admin", "case-manager", "worker"]
-      },
-      {
-        name: 'flow-management',
-        icon: <TiFlowChildren />,
-        allowed: ["admin"]
-      },
-      {
-        name: "manage-data",
-        icon: <BsDatabaseFill />,
-        allowed: ["admin"]
-      },
-      {
-        name: 'messages',
+        name: 'Notifications',
         icon: <AiOutlineMessage />,
-        allowed: ["admin", "case-manager", "worker"]
+        allowed: ["admin", "user"]
       },
       {
         name: 'edit-profile',
         icon: <FiUser />,
-        allowed: ["admin", "case-manager", "worker"]
+        allowed: ["admin", "user"]
       },
     ],
   },
