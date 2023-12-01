@@ -29,7 +29,7 @@ function SignUp() {
     );
     if (response.data.email) {
       localStorage.setItem("userDetails", JSON.stringify(response.data));
-      navigate("/");
+      navigate("/cvd");
     }else {
         seterr("User already exists");
         return;
@@ -71,7 +71,7 @@ function SignUp() {
       console.log(response2);
       if (response2.data.email) {
         localStorage.setItem("userDetails", JSON.stringify(response2.data));
-        navigate("/edit-profile");
+        navigate("/cvd");
       } else {
         seterr("email and password don't match");
         return;

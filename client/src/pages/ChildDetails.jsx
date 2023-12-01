@@ -50,7 +50,7 @@ setHistoryDetails(response.data.response);
         <button
           className="hover:text-slate-500"
           onClick={() => {
-            if (user && user.category==="admin") navigate(`/user-details?id=${user.email}`);
+            if (user && user.category==="admin") navigate(`/user-details?id=${location.state.workerId}`);
             else navigate("/edit-profile");
           }}
         >

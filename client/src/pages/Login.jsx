@@ -24,7 +24,7 @@ function Login() {
     );
     if (response.data.email) {
       localStorage.setItem("userDetails", JSON.stringify(response.data));
-      navigate("/");
+      navigate("/users");
     }
     const response2 = await axios.post(
       `http://localhost:3000/users/createSession?email=${email}&password=${pass}`,
@@ -34,7 +34,7 @@ function Login() {
     );
     if (response2.data.email) {
       localStorage.setItem("userDetails", JSON.stringify(response2.data));
-      navigate("/");
+      navigate("/cvd");
     }else {
       seterr("email and password doesn't match");
       return;
@@ -76,7 +76,7 @@ function Login() {
       console.log(response2);
       if (response2.data.email) {
         localStorage.setItem("userDetails", JSON.stringify(response2.data));
-        navigate("/edit-profile");
+        navigate("/cvd");
       } else {
         seterr("email and password don't match");
         return;

@@ -251,7 +251,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                   <li
                     className="py-2 my-2 sm:py-4 capitalize mt-2 cursor-pointer hover:bg-slate-100 px-3 rounded"
                     onClick={() =>
-                      navigate(`/cvd-details?id=${history._id}`)
+                      navigate(`/cvd-details?id=${history._id}` , { state: { workerId } })
                     }
                   >
                     <div className="flex items-center space-x-4 capitalize">
