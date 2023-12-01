@@ -50,7 +50,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
       <div className="flex justify-start items-center mb-7">
         <button
           className="hover:text-slate-500"
-          onClick={() => navigate("/workers")}
+          onClick={() => navigate("/users")}
         >
           <FaArrowLeft />
         </button>

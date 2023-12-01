@@ -82,8 +82,8 @@ const Employees = () => {
             width="120"
           ></ColumnDirective>
           <ColumnDirective
-            field="email"
-            headerText={t("Email")}
+            field="CVDScore"
+            headerText={t("CVDScore")}
             width="120"
           ></ColumnDirective>
         </ColumnsDirective>

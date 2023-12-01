@@ -43,5 +43,7 @@ router.get('/all_users',userController.allUsers);
 router.post('/getuserbyemail',userController.getUserByEmail);
 
 router.post('/cvd_prediction',userController.cvdPrediction);
+router.post('/cvd_history',userController.cvdHistory);
+router.post('/cvd_report',userController.cvdReport);
 // router.post('/createsessionjwt',authentication.createSession);
 module.exports=router;

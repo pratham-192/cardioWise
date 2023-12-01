@@ -376,3 +376,27 @@ module.exports.cvdPrediction=async function(req,res){
         return res.status(200).send("error in getting prediction");
     }
 }
+
+module.exports.cvdHistory=async function(req,res){
+    try{
+        let history=await CvdPrediction.find({email:req.body.email});
+
+        return res.status(200).json({response:history});
+        
+    }catch(err){
+        console.log(err);
+        return res.status(200).send("error in getting cvd History");
+    }
+}
+
+module.exports.cvdReport=async function(req,res){
+    try{
+        let report=await CvdPrediction.findById(req.body.report_id);
+
+        return res.status(200).json({response:report});
+        
+    }catch(err){
+        console.log(err);
+        return res.status(200).send("error in getting cvd History");
+    }
+}
