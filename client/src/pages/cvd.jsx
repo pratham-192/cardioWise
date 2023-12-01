@@ -272,7 +272,7 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setAgeCategory(e.target.value)}
                                                 required
                                             >
-                                                <option value="">Select</option>
+                                                <option value="" disabled>Select</option>
                                                 <option value="18-24">18-24 </option>
                                                 <option value="25-29">25-29 </option>
                                                 <option value="30-34">30-34 </option>

@@ -6,6 +6,7 @@ const cvdPredictionSchema = mongoose.Schema({
   },
   CVDScore: {
     type: Number,
+    default:-1
   },
   generalHealth: {
     type: Number,

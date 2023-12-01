@@ -379,7 +379,7 @@ module.exports.cvdPrediction=async function(req,res){
 
 module.exports.cvdHistory=async function(req,res){
     try{
-        let history=await CvdPrediction.find({email:req.body.email});
+        let history=await CvdPrediction.find({email:req.body.email}).sort('createdAt');
 
         return res.status(200).json({response:history});
         

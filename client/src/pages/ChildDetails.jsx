@@ -17,12 +17,11 @@ const ChildDetails = () => {
 const [historyDetails, setHistoryDetails] = useState({});
   const { t } = useTranslation();
   const user = JSON.parse(localStorage.getItem("userDetails"));
-
+  if (!user ) navigate("/login");
 
 useEffect(async () => {
   const response=await axios.post("http://localhost:3000/users/cvd_report",
   {report_id:historyId})
-console.log(response.data.response);
 setHistoryDetails(response.data.response);
   
 }, [])
@@ -51,8 +50,8 @@ setHistoryDetails(response.data.response);
         <button
           className="hover:text-slate-500"
           onClick={() => {
-            if (user && user.category !== "user") navigate("/cases");
-            else navigate("/child-alloted");
+            if (user && user.category==="admin") navigate(`/user-details?id=${user.email}`);
+            else navigate("/edit-profile");
           }}
         >
           <FaArrowLeft />
@@ -102,7 +101,7 @@ setHistoryDetails(response.data.response);
           <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
             <div>
               <p className="font-bold text-gray-700 text-md">
-                {historyDetails && historyDetails.CVDScore}
+                {historyDetails && historyDetails.CVDScore===-1?"Not Calculated":historyDetails.CVDScore}
               </p>
               <p className="text-gray-400">{t("CVD score")}</p>
             </div>

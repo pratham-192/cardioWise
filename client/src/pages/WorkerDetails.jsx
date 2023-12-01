@@ -14,6 +14,7 @@ const WorkerDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const workerId = location.search.substring(4);
+  const [cvdHistory, setCvdHistory] = useState([]);
 const [workerJoinDate, setworkerJoinDate] = useState()
   const [workerDetails, setworkerDetails] = useState({});
   // const [openupdateWorker, setopenupdateWorker] = useState(false);
@@ -37,12 +38,18 @@ const [workerJoinDate, setworkerJoinDate] = useState()
       }
     );
     setworkerJoinDate(response.data.response.createdAt.substring(0,10));
-    console.log(response)
+    // console.log(response)
     if (response2.data && response2.data.response) {
       const uint8Array = new Uint8Array(response2.data.response.data);
       const blob = new Blob([uint8Array]);
       setimageUrl(URL.createObjectURL(blob));
     }
+    const res=await axios.post(
+      "http://localhost:3000/users/cvd_history",{
+        email:workerId
+      }
+    )
+    setCvdHistory(res.data.response);
   }, []);
 
   return (
@@ -226,6 +233,61 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                   </li>
                       
                 
+          </ul>
+        </div>
+        <div className="mt-12 flex flex-col justify-center">
+          {workerDetails &&
+          cvdHistory &&
+          cvdHistory.length ? (
+            <div className="pl-3 text-lg font-bold">{t("History")}</div>
+          ) : (
+            ""
+          )}
+          <ul className="w-full divide-y divide-gray-200 dark:divide-gray-700 ">
+            {workerDetails &&
+              cvdHistory &&
+              cvdHistory.map((history) => {
+                return (
+                  <li
+                    className="py-2 my-2 sm:py-4 capitalize mt-2 cursor-pointer hover:bg-slate-100 px-3 rounded"
+                    onClick={() =>
+                      navigate(`/cvd-details?id=${history._id}`)
+                    }
+                  >
+                    <div className="flex items-center space-x-4 capitalize">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                          {history.CVDScore===-1?"Not calculated":history.CVDScore}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                          CVD Score
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">
+                        <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
+                          <p>
+                            {history.CVDScore > 80 ? (
+                              <p className="h-3 w-3 rounded-full bg-red-400"></p>
+                            ) : (
+                              <p>
+                                
+                                  <p className="h-3 w-3 rounded-full bg-green-400"></p>
+                              
+                                 
+                                
+                              </p>
+                            )}
+                          </p>
+                          <p>{history.CVDScore>80?"dangerous":"okay"}</p>
+                        </div>
+                      </div>
+                      <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">
+                        {t(`${history.createdAt.substring(0,10)}`)}
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>
