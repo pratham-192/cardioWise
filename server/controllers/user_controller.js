@@ -6,7 +6,8 @@ const crypto = require("crypto");
 const axios = require('axios');
 const fastcsv = require('fast-csv');
 const bcrypt = require('bcrypt');
-
+const OpenAI =require('openai');
+// import OpenAI from 'openai';
 const CvdPrediction=require('../models/cvd');
 module.exports.profile = function (req, res) {
     // return res.render('user_profile', {
@@ -398,5 +399,26 @@ module.exports.cvdReport=async function(req,res){
     }catch(err){
         console.log(err);
         return res.status(200).send("error in getting cvd History");
+    }
+}
+module.exports.chat=async function(req,res){
+    try{
+        // console.log(req.body.messages)
+        let openai = new OpenAI({
+            apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
+          });
+          const completion = await openai.completions.create({
+            model: 'text-davinci-002',
+            prompt: 'Say this is a test',
+            max_tokens: 6,
+            temperature: 0,
+          });
+        
+          console.log(completion.choices);
+          console.log(completion)
+          return res.status(200).send(completion);
+    }catch(err){
+        console.log(err);
+        return res.status(200).send("error in chat");
     }
 }

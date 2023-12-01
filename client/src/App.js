@@ -15,7 +15,7 @@ import WorkerDetails from './pages/WorkerDetails';
 // import Messages from './pages/Messages';
 import ForgotPassword from './pages/ForgotPassword';
 // import ManageData from './pages/ManageData';
-// import ChatBot from './pages/ChatBot';
+import ChatBot from './pages/ChatBot';
 import CvdPredictionForm from './pages/cvd';
 
 const App = () => {
@@ -78,7 +78,7 @@ const App = () => {
                 <Route path="/login" element={(<Login />)} />
                 <Route path="/signup" element={(<SignUp />)} />
                 <Route path="/edit-profile" element={<EditProfile />} />
-                {/* <Route path="/chat-bot" element={(<ChatBot />)} /> */}
+                <Route path="/chat-bot" element={(<ChatBot />)} />
                 <Route path="/forgot-password" element={(<ForgotPassword />)} />
                 {/* <Route path="/analytics" element={(<Analytics />)} /> */}
                 <Route path="/users" element={<Employees />} />

@@ -45,5 +45,6 @@ router.post('/getuserbyemail',userController.getUserByEmail);
 router.post('/cvd_prediction',userController.cvdPrediction);
 router.post('/cvd_history',userController.cvdHistory);
 router.post('/cvd_report',userController.cvdReport);
+router.post('/chat',userController.chat);
 // router.post('/createsessionjwt',authentication.createSession);
 module.exports=router;
