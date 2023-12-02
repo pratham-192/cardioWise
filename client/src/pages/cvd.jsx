@@ -34,7 +34,7 @@ const CvdPredictionForm = () => {
     const [openPopUp, setopenPopUp] = useState(false);
 
     const submitCvdPrediction = async () => {
-        if (!generalHealth || !exercise  || !exercise || !heartDisease || !skinCancer ||
+        if (!generalHealth   || !exercise || !skinCancer ||
             !otherCancer || !depression || !diabetes || !arthritis || !sex || !ageCategory || !smokingHistory
             || !checkup || !height || !weight || !alcoholConsumption || !fruitConsumption || !greenVegetablesConsumption || !friedPotatoConsumption) {
             seterr("Please fill all the details");
@@ -63,11 +63,11 @@ const CvdPredictionForm = () => {
                 friedPotatoConsumption: friedPotatoConsumption,
             }
         );
-
-        if (response.data.response) {
-            setcvdScore(response.data.response.probability_of_occurrence)
+            // console.log(response.data)
+        if (response.data) {
+            setcvdScore(response.data.probability_of_occurrence.toFixed(5));
             setopenPopUp(true);
-        }
+        
         setGeneralHealth("");
         setExercise("");
         setSkinCancer("");
@@ -85,7 +85,7 @@ const CvdPredictionForm = () => {
         setFruitConsumption("");
         setGreenVegetablesConsumption("");
         setFriedPotatoConsumption("");
-        seterr("");
+        seterr("");}
     };
 
     return (
@@ -361,7 +361,7 @@ const CvdPredictionForm = () => {
                                                 min="-1"
                                                 max="30"
                                                 value={alcoholConsumption}
-                                                onChange={(e) => setAlcoholConsumption(Math.min(Math.max(e.target.value, 0), 30))}
+                                                onChange={(e) => setAlcoholConsumption(Math.min(Math.max(e.target.value, -1), 30))}
                                                 required
                                             />
                                         </div>

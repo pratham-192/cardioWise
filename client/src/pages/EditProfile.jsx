@@ -258,7 +258,7 @@ const EditProfile = () => {
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">
                         <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
                           <p>
-                            {history.CVDScore > 80 ? (
+                            {history.CVDScore > 0.5 ? (
                               <p className="h-3 w-3 rounded-full bg-red-400"></p>
                             ) : (
                               <p>
@@ -270,7 +270,7 @@ const EditProfile = () => {
                               </p>
                             )}
                           </p>
-                          <p>{history.CVDScore>80?"dangerous":"okay"}</p>
+                          <p>{history.CVDScore>0.5?"dangerous":"okay"}</p>
                         </div>
                       </div>
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">

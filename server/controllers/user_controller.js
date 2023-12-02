@@ -6,9 +6,9 @@ const crypto = require("crypto");
 const axios = require('axios');
 const fastcsv = require('fast-csv');
 const bcrypt = require('bcrypt');
-const OpenAI =require('openai');
+const OpenAI = require('openai');
 // import OpenAI from 'openai';
-const CvdPrediction=require('../models/cvd');
+const CvdPrediction = require('../models/cvd');
 module.exports.profile = function (req, res) {
     // return res.render('user_profile', {
     //     title: 'User Profile'
@@ -16,13 +16,13 @@ module.exports.profile = function (req, res) {
     return res.status(200).send("profile page");
 }
 
-module.exports.getUserGoogle=async function(req,res){
-    try{
-        const user=await User.findOne({email:req.body.email});
-        if(user){
+module.exports.getUserGoogle = async function (req, res) {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (user) {
             return res.status(200).send(user);
         }
-        else{
+        else {
             let newuser = await User.create({
                 name: req.body.name,
                 email: req.body.email,
@@ -39,7 +39,7 @@ module.exports.getUserGoogle=async function(req,res){
             await newuser.save();
             return res.status(200).send(newuser);
         }
-    }catch(err){
+    } catch (err) {
         console.log(err)
         return res.status(200).send("error in getting user");
     }
@@ -197,7 +197,7 @@ module.exports.update = async function (req, res) {
 
 module.exports.imageUpload = async function (req, res) {
     try {
-        let user = await User.findOne({email:req.body.user_id})
+        let user = await User.findOne({ email: req.body.user_id })
         if (!user) return res.status(200).send("user doesn't exists");
         user.avatar = req.file.buffer;
         user.save();
@@ -324,34 +324,34 @@ module.exports.csvDownload = async function (req, res) {
     }
 };
 
-module.exports.allUsers=async function(req,res){
-    try{
-        let users=await User.find({});
-        return res.status(200).json({response:users});
-    }catch(err){
+module.exports.allUsers = async function (req, res) {
+    try {
+        let users = await User.find({});
+        return res.status(200).json({ response: users });
+    } catch (err) {
         return res.status(200).send("error in getting all users");
     }
 }
 
 
-module.exports.getUserByEmail=async function(req,res){
-    try{
-        let users=await User.findOne({email:req.body.user_id});
+module.exports.getUserByEmail = async function (req, res) {
+    try {
+        let users = await User.findOne({ email: req.body.user_id });
         // console.log(users)
-        return res.status(200).json({response:users});
-    }catch(err){
+        return res.status(200).json({ response: users });
+    } catch (err) {
         return res.status(200).send("error in getting all users");
     }
 }
-module.exports.cvdPrediction=async function(req,res){
-    try{
-        const user = await User.findOne({email:req.body.userId});
+module.exports.cvdPrediction = async function (req, res) {
+    try {
+        const user = await User.findOne({ email: req.body.userId });
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
         // console.log(req.body)
-        let prediction=await CvdPrediction.create({
-            email:req.body.userId,
+        let prediction = await CvdPrediction.create({
+            email: req.body.userId,
             generalHealth: parseInt(req.body.generalHealth),
             exercise: parseInt(req.body.exercise),
             skinCancer: parseInt(req.body.skinCancer),
@@ -362,7 +362,7 @@ module.exports.cvdPrediction=async function(req,res){
             sex: parseInt(req.body.sex),
             ageCategory: req.body.ageCategory,
             smokingHistory: parseInt(req.body.smokingHistory),
-            checkup: parseInt(req.body.checkup),  
+            checkup: parseInt(req.body.checkup),
             height: parseInt(req.body.height),
             weight: parseInt(req.body.weight),
             alcoholConsumption: parseInt(req.body.alcoholConsumption),
@@ -370,8 +370,9 @@ module.exports.cvdPrediction=async function(req,res){
             greenVegetablesConsumption: parseInt(req.body.greenVegetablesConsumption),
             friedPotatoConsumption: parseInt(req.body.friedPotatoConsumption),
         });
-        let agemin=parseInt(prediction.ageCategory.substring(0,2));
-        let res=await axios.post('http://localhost:3000/users/sendmail', {
+        let agemin = parseInt(prediction.ageCategory.substring(0, 2));
+        // console.log(prediction)
+        let predict = await axios.post('http://127.0.0.1:5000/predict', {
             "General_Health": prediction.generalHealth,
             "Exercise": prediction.exercise,
             "Skin_Cancer": prediction.skinCancer,
@@ -380,7 +381,7 @@ module.exports.cvdPrediction=async function(req,res){
             "Diabetes": prediction.diabetes,
             "Arthritis": prediction.arthritis,
             "Sex": prediction.sex,
-            "Age_min" : agemin,
+            "Age_min": agemin,
             "Smoking_History": prediction.smokingHistory,
             "Checkup": prediction.checkup,
             "Height_(cm)": prediction.height,
@@ -389,55 +390,60 @@ module.exports.cvdPrediction=async function(req,res){
             "Fruit_Consumption": prediction.fruitConsumption,
             "Green_Vegetables_Consumption": prediction.greenVegetablesConsumption,
             "FriedPotato_Consumption": prediction.friedPotatoConsumption
-          });
-          console.log(res);
-        return res.status(200).json({response:res});
-    }catch(err){
+        });
+        //   console.log(predict);
+        const predictionData = predict.data;
+        prediction.CVDScore=predictionData.probability_of_occurrence.toFixed(5);
+        await prediction.save();
+        return res.status(200).json(predictionData);
+
+    } catch (err) {
         console.log(err);
         return res.status(200).send("error in getting prediction");
     }
 }
 
-module.exports.cvdHistory=async function(req,res){
-    try{
-        let history=await CvdPrediction.find({email:req.body.email}).sort('createdAt');
+module.exports.cvdHistory = async function (req, res) {
+    try {
+        let history = await CvdPrediction.find({ email: req.body.email }).sort({ createdAt: -1 });
 
-        return res.status(200).json({response:history});
-        
-    }catch(err){
+
+        return res.status(200).json({ response: history });
+
+    } catch (err) {
         console.log(err);
         return res.status(200).send("error in getting cvd History");
     }
 }
 
-module.exports.cvdReport=async function(req,res){
-    try{
-        let report=await CvdPrediction.findById(req.body.report_id);
+module.exports.cvdReport = async function (req, res) {
+    try {
+        let report = await CvdPrediction.findById(req.body.report_id);
 
-        return res.status(200).json({response:report});
-        
-    }catch(err){
+        return res.status(200).json({ response: report });
+
+    } catch (err) {
         console.log(err);
         return res.status(200).send("error in getting cvd History");
     }
 }
-module.exports.chat=async function(req,res){
-    try{
+module.exports.chat = async function (req, res) {
+    try {
         // console.log(req.body.messages)
         let openai = new OpenAI({
             apiKey: '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', // defaults to process.env["OPENAI_API_KEY"]
-          });
-          const completion = await openai.completions.create({
+        });
+        const completion = await openai.completions.create({
             model: 'text-davinci-002',
             prompt: 'Say this is a test',
             max_tokens: 6,
             temperature: 0,
-          });
-        
-          console.log(completion.choices);
-          console.log(completion)
-          return res.status(200).send(completion);
-    }catch(err){
+        });
+
+        console.log(completion.choices);
+        console.log(completion)
+        return res.status(200).send(completion);
+    } catch (err) {
         console.log(err);
         return res.status(200).send("error in chat");
     }
