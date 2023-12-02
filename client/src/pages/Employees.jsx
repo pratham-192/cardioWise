@@ -7,6 +7,8 @@ import {
   Search,
   Inject,
   Toolbar,
+  Sort,
+  Filter
 } from "@syncfusion/ej2-react-grids";
 // import AddWorkerPopUp from "../components/Modal/AddWorkerPopUp";
 import axios from "axios";
@@ -87,7 +89,7 @@ const Employees = () => {
             width="120"
           ></ColumnDirective>
         </ColumnsDirective>
-        <Inject services={[Page, Search, Toolbar]} />
+        <Inject services={[Page, Search, Toolbar, Sort, Filter]} />
       </GridComponent>
     </div>
   );
