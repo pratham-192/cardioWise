@@ -41,7 +41,7 @@ const CvdPredictionForm = () => {
             return;
         }
         const response = await axios.post(
-            "http://localhost:3000/users/cvd_prediction",
+            "https://cvd-server.onrender.com/users/cvd_prediction",
             {
                 userId: userId,
                 generalHealth: generalHealth,

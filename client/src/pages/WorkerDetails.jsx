@@ -25,14 +25,14 @@ const [workerJoinDate, setworkerJoinDate] = useState()
 
   useEffect(async () => {
     const response = await axios.post(
-      "http://localhost:3000/users/getuserbyemail",
+      "https://cvd-server.onrender.com/users/getuserbyemail",
       {
         user_id: workerId,
       }
     );
     setworkerDetails(response.data.response);
     const response2 = await axios.post(
-      "http://localhost:3000/users/get_image",
+      "https://cvd-server.onrender.com/users/get_image",
       {
         user_id: workerId,
       }
@@ -45,7 +45,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
       setimageUrl(URL.createObjectURL(blob));
     }
     const res=await axios.post(
-      "http://localhost:3000/users/cvd_history",{
+      "https://cvd-server.onrender.com/users/cvd_history",{
         email:workerId
       }
     )

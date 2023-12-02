@@ -16,7 +16,7 @@ const UserProfile = () => {
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const logoutHandler = async () => {
-    // const response = await axios.post("http://localhost:3000/users/sign-out");
+    // const response = await axios.post("https://cvd-server.onrender.com/users/sign-out");
     // console.log(response.data);
     localStorage.removeItem("userDetails");
     navigate("/login");

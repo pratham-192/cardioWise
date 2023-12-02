@@ -17,7 +17,7 @@ function Login() {
 
   const loginHandler = async () => {
     const response = await axios.post(
-      `http://localhost:3000/users/createSession?email=${email}&password=${pass}`,
+      `https://cvd-server.onrender.com/users/createSession?email=${email}&password=${pass}`,
       {
         category: "admin",
       }
@@ -27,7 +27,7 @@ function Login() {
       navigate("/users");
     }
     const response2 = await axios.post(
-      `http://localhost:3000/users/createSession?email=${email}&password=${pass}`,
+      `https://cvd-server.onrender.com/users/createSession?email=${email}&password=${pass}`,
       {
         category: "user",
       }
@@ -67,7 +67,7 @@ function Login() {
       console.log(decoded);
 
       const response2 = await axios.post(
-        `http://localhost:3000/users/get_user_google`,
+        `https://cvd-server.onrender.com/users/get_user_google`,
         {
           email: decoded.email,
           name: decoded.given_name,

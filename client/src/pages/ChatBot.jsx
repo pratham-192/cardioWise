@@ -20,7 +20,7 @@ console.log(messageArr)
     messageArr.push({'role':'user','content':userMessage})
     console.log(messageArr)
     const response = await axios.post(
-      "http://localhost:3000/users/chat",
+      "https://cvd-server.onrender.com/users/chat",
       {
         messages: messageArr,
       }

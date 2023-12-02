@@ -29,7 +29,7 @@ module.exports.getUserGoogle = async function (req, res) {
                 password: crypto.randomBytes(4).toString('hex'),
                 category: 'user',
             });
-            await axios.post('http://localhost:3000/users/sendmail', {
+            await axios.post('https://cvd-server.onrender.com/users/sendmail', {
                 password: newuser.password,
                 name: newuser.name,
                 email: newuser.email,
@@ -85,7 +85,7 @@ module.exports.create = async function (req, res) {
                 contactNo: req.body.contactNo
             });
 
-            await axios.post('http://localhost:3000/users/sendmail', {
+            await axios.post('https://cvd-server.onrender.com/users/sendmail', {
                 password: req.body.password,
                 name: req.body.name,
                 email: req.body.email,
@@ -372,7 +372,7 @@ module.exports.cvdPrediction = async function (req, res) {
         });
         let agemin = parseInt(prediction.ageCategory.substring(0, 2));
         // console.log(prediction)
-        let predict = await axios.post('http://127.0.0.1:5000/predict', {
+        let predict = await axios.post('https://cardiovascular-disease-prediction-wj3v.onrender.com/predict', {
             "General_Health": prediction.generalHealth,
             "Exercise": prediction.exercise,
             "Skin_Cancer": prediction.skinCancer,

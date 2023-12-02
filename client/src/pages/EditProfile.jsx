@@ -27,7 +27,7 @@ const EditProfile = () => {
 
   useEffect(async() => {
     const res=await axios.post(
-      "http://localhost:3000/users/cvd_history",{
+      "https://cvd-server.onrender.com/users/cvd_history",{
         email:currentuser.email
       }
     )
@@ -40,11 +40,11 @@ const EditProfile = () => {
       formData.append("file", avatar);
       formData.append("user_id", userId);
       await axios.post(
-        "http://localhost:3000/users/image_upload",
+        "https://cvd-server.onrender.com/users/image_upload",
         formData
       );
       const response = await axios.post(
-        "http://localhost:3000/users/update",
+        "https://cvd-server.onrender.com/users/update",
         {
           name: userName,
           email: userEmail,
@@ -65,7 +65,7 @@ const EditProfile = () => {
       }
     } else {
       const response = await axios.post(
-        "http://localhost:3000/users/update",
+        "https://cvd-server.onrender.com/users/update",
         {
           name: userName,
           email: userEmail,

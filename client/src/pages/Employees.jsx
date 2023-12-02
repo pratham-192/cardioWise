@@ -25,7 +25,7 @@ const Employees = () => {
   useEffect(async () => {
     if (user && user.category === "admin") {
       const response = await axios.get(
-        "http://localhost:3000/users/all_users"
+        "https://cvd-server.onrender.com/users/all_users"
       );
       setworkerData(response.data.response);
     } 

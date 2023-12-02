@@ -14,7 +14,7 @@ function Login() {
 
   const forgotPasswordHandler = async () => {
     const response = await axios.post(
-      `http://localhost:3000/users/reset_password`,
+      `https://cvd-server.onrender.com/users/reset_password`,
       {
         email: email,
       }

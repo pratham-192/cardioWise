@@ -20,7 +20,7 @@ const [historyDetails, setHistoryDetails] = useState({});
   if (!user ) navigate("/login");
 
 useEffect(async () => {
-  const response=await axios.post("http://localhost:3000/users/cvd_report",
+  const response=await axios.post("https://cvd-server.onrender.com/users/cvd_report",
   {report_id:historyId})
 setHistoryDetails(response.data.response);
   

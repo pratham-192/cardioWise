@@ -19,7 +19,7 @@ function SignUp() {
 
   const SignUpHandler = async () => {
     const response = await axios.post(
-      `http://localhost:3000/users/create`,
+      `https://cvd-server.onrender.com/users/create`,
       {
         category: "user",
         name:name,
@@ -62,7 +62,7 @@ function SignUp() {
       console.log(decoded);
 
       const response2 = await axios.post(
-        `http://localhost:3000/users/get_user_google`,
+        `https://cvd-server.onrender.com/users/get_user_google`,
         {
           email: decoded.email,
           name: decoded.given_name,
