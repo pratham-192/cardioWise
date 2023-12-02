@@ -28,6 +28,7 @@ const CvdPredictionForm = () => {
     const [greenVegetablesConsumption, setGreenVegetablesConsumption] = useState();
     const [friedPotatoConsumption, setFriedPotatoConsumption] = useState();
     const [err, seterr] = useState("");
+    const [cvdScore, setcvdScore] = useState();
     const { t } = useTranslation();
 
     const [openPopUp, setopenPopUp] = useState(false);
@@ -64,6 +65,7 @@ const CvdPredictionForm = () => {
         );
 
         if (response.data.response) {
+            setcvdScore(response.data.response.probability_of_occurrence)
             setopenPopUp(true);
         }
         setGeneralHealth("");
@@ -92,7 +94,7 @@ const CvdPredictionForm = () => {
             <div>
                 {openPopUp ? (
                     <PopUp
-                        message={"CVD Prediction submitted successfully"}
+                        message={`your probability of having a heart disease is ${cvdScore}`}
                         status={true}
                         setopenPopUp={setopenPopUp}
                         heading={"Success"}

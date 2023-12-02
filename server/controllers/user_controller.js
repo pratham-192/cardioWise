@@ -369,8 +369,29 @@ module.exports.cvdPrediction=async function(req,res){
             fruitConsumption: parseInt(req.body.fruitConsumption),
             greenVegetablesConsumption: parseInt(req.body.greenVegetablesConsumption),
             friedPotatoConsumption: parseInt(req.body.friedPotatoConsumption),
-        })
-        return res.status(200).json({response:prediction});
+        });
+        let agemin=parseInt(prediction.ageCategory.substring(0,2));
+        let res=await axios.post('http://localhost:3000/users/sendmail', {
+            "General_Health": prediction.generalHealth,
+            "Exercise": prediction.exercise,
+            "Skin_Cancer": prediction.skinCancer,
+            "Other_Cancer": prediction.otherCancer,
+            "Depression": prediction.depression,
+            "Diabetes": prediction.diabetes,
+            "Arthritis": prediction.arthritis,
+            "Sex": prediction.sex,
+            "Age_min" : agemin,
+            "Smoking_History": prediction.smokingHistory,
+            "Checkup": prediction.checkup,
+            "Height_(cm)": prediction.height,
+            "Weight_(kg)": prediction.weight,
+            "Alcohol_Consumption": prediction.alcoholConsumption,
+            "Fruit_Consumption": prediction.fruitConsumption,
+            "Green_Vegetables_Consumption": prediction.greenVegetablesConsumption,
+            "FriedPotato_Consumption": prediction.friedPotatoConsumption
+          });
+          console.log(res);
+        return res.status(200).json({response:res});
     }catch(err){
         console.log(err);
         return res.status(200).send("error in getting prediction");
