@@ -249,25 +249,25 @@ setHistoryDetails(response.data.response);
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("During the past 30 days, how many days did you have at least one drink of any alcoholic beverage such as beer, wine, a malt beverage or liquor?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.alcoholConsumption===1?"Yes":"No"}
+              {historyDetails && historyDetails.alcoholConsumption}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("Not including juices, how often did you eat fruit (past 30 days)?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.fruitConsumption===1?"Yes":"No"}
+              {historyDetails && historyDetails.fruitConsumption}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("How often did you eat a green leafy or lettuce salad, with or without other vegetables?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.greenVegetablesConsumption===1?"Yes":"No"}
+              {historyDetails && historyDetails.greenVegetablesConsumption}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("How often did you eat any kind of fried potatoes, including French fries, home fries, or hash browns?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.friedPotatoConsumption===1?"Yes":"No"}
+              {historyDetails && historyDetails.friedPotatoConsumption}
             </span>
           </p>
           {/* <p className="text-gray-800 font-bold p-1 lg:mx-16 border-b-2 py-4">

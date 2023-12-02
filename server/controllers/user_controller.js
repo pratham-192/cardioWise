@@ -395,6 +395,8 @@ module.exports.cvdPrediction = async function (req, res) {
         const predictionData = predict.data;
         prediction.CVDScore=predictionData.probability_of_occurrence.toFixed(5);
         await prediction.save();
+        user.CVDScore=predictionData.probability_of_occurrence.toFixed(5);
+        await user.save();
         return res.status(200).json(predictionData);
 
     } catch (err) {
