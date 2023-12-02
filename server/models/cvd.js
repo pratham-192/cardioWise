@@ -14,9 +14,6 @@ const cvdPredictionSchema = mongoose.Schema({
   exercise: {
     type: Number,
   },
-  heartDisease: {
-    type: Number,
-  },
   skinCancer: {
     type: Number,
   },

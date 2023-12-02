@@ -354,7 +354,6 @@ module.exports.cvdPrediction=async function(req,res){
             email:req.body.userId,
             generalHealth: parseInt(req.body.generalHealth),
             exercise: parseInt(req.body.exercise),
-            heartDisease: parseInt(req.body.heartDisease),
             skinCancer: parseInt(req.body.skinCancer),
             otherCancer: parseInt(req.body.otherCancer),
             depression: parseInt(req.body.depression),

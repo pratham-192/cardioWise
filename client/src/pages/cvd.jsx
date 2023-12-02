@@ -33,7 +33,7 @@ const CvdPredictionForm = () => {
     const [openPopUp, setopenPopUp] = useState(false);
 
     const submitCvdPrediction = async () => {
-        if (!generalHealth || !exercise || !heartDisease || !exercise || !heartDisease || !skinCancer ||
+        if (!generalHealth || !exercise  || !exercise || !heartDisease || !skinCancer ||
             !otherCancer || !depression || !diabetes || !arthritis || !sex || !ageCategory || !smokingHistory
             || !checkup || !height || !weight || !alcoholConsumption || !fruitConsumption || !greenVegetablesConsumption || !friedPotatoConsumption) {
             seterr("Please fill all the details");
@@ -45,7 +45,6 @@ const CvdPredictionForm = () => {
                 userId: userId,
                 generalHealth: generalHealth,
                 exercise: exercise,
-                heartDisease: heartDisease,
                 skinCancer: skinCancer,
                 otherCancer: otherCancer,
                 depression: depression,
@@ -69,7 +68,6 @@ const CvdPredictionForm = () => {
         }
         setGeneralHealth("");
         setExercise("");
-        setHeartDisease("");
         setSkinCancer("");
         setOtherCancer("");
         setDepression("");
@@ -145,7 +143,7 @@ const CvdPredictionForm = () => {
                                                 <option value="0">No</option>
                                             </select>
                                         </div>
-                                        <div className="md:col-span-5">
+                                        {/* <div className="md:col-span-5">
                                             <label htmlFor="heartDisease">{t("Heart Disease")}</label>
                                             <span className="text-red-500 pl-1">*</span>
                                             <select
@@ -160,7 +158,7 @@ const CvdPredictionForm = () => {
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
                                             </select>
-                                        </div>
+                                        </div> */}
                                         <div className="md:col-span-5">
                                             <label htmlFor="heartDisease">{t("(Ever told) (you had) skin cancer?")}</label>
                                             <span className="text-red-500 pl-1">*</span>
@@ -223,8 +221,8 @@ const CvdPredictionForm = () => {
                                                 <option value="" disabled>Select</option>
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>
-                                                <option value="0">No, pre-diabetes or borderline diabetes</option>
-                                                <option value="1">Yes, but female told only during pregnancy</option>
+                                                {/* <option value="0">No, pre-diabetes or borderline diabetes</option> */}
+                                                {/* <option value="1">Yes, but female told only during pregnancy</option> */}
 
                                             </select>
                                         </div>
