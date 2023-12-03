@@ -75,7 +75,7 @@ setHistoryDetails(response.data.response);
       ) : (
         ""
       )} */}
-      <Header title={t("CVD Test Details")} />
+      <Header title={t("cvd test details")} />
       <div className="p-8 bg-white mt-16 rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-3 pt-10">
           {/* <div className="relative">
@@ -103,7 +103,7 @@ setHistoryDetails(response.data.response);
               <p className="font-bold text-gray-700 text-md">
                 {historyDetails && historyDetails.CVDScore===-1?"Not Calculated":historyDetails.CVDScore}
               </p>
-              <p className="text-gray-400">{t("CVD score")}</p>
+              <p className="text-gray-400">{t("cvd score")}</p>
             </div>
             {/* <div>
               <p className="font-bold text-gray-700 text-md capitalize">
@@ -157,59 +157,61 @@ setHistoryDetails(response.data.response);
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("Would you say that in general, your health is")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.generalHealth===5?"Very Good":""
-              && historyDetails.generalHealth===4?"Good":""
-              && historyDetails.generalHealth===3?"Excellent":""
-              && historyDetails.generalHealth===2?"Fair":""
-              && historyDetails.generalHealth===1?"Poor":""}
+              {historyDetails &&
+                (historyDetails.generalHealth === 5
+                  ? t('very good')
+                  : historyDetails.generalHealth === 4
+                  ? t('good')
+                  : historyDetails.generalHealth === 3
+                  ? t('excellent')
+                  : historyDetails.generalHealth === 2
+                  ? t('fair')
+                  : historyDetails.generalHealth === 1
+                  ? t('poor')
+                  : '')}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("During the past month, other than your regular job, did you participate in any physical activities or exercises such as running, calisthenics, golf, gardening, or walking for exercise?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.exercise===1?"Yes":"No"}
+              {historyDetails && historyDetails.exercise===1?t("yes"):t("no")}
             </span>
           </p>
-          <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
-            {t("Heart Disease")} :{" "}
-            <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.heartDisease===1?"Yes":"No"}
-            </span>
-          </p>
+          
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2  py-4">
             {t("(Ever told) (you had) skin cancer?")} :
             <span className="text-slate-600 font-bold py-4 pb-5 p-1">
-              {historyDetails && historyDetails.skinCancer===1?"Yes":"No"}
+              {historyDetails && historyDetails.skinCancer===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("(Ever told) (you had) any other types of cancer?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.otherCancer===1?"Yes":"No"}
+              {historyDetails && historyDetails.otherCancer===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("(Ever told) (you had) a depressive disorder (including depression, major depression, dysthymia, or minor depression)?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.depression===1?"Yes":"No"}
+              {historyDetails && historyDetails.depression===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("(Ever told) (you had) diabetes?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.diabetes===1?"Yes":"No"}
+              {historyDetails && historyDetails.diabetes===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("(Ever told) (you had) some form of arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.arthritis===1?"Yes":"No"}
+              {historyDetails && historyDetails.arthritis===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("Sex")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.sex===1?"Female":"Male"}
+              {historyDetails && historyDetails.sex===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
@@ -221,21 +223,28 @@ setHistoryDetails(response.data.response);
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("Have you smoked at least 100 cigarettes in your entire life?")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.smokingHistory===1?"Yes":"No"}
+              {historyDetails && historyDetails.smokingHistory===1?t("yes"):t("no")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("About how long has it been since you last visited a doctor for a routine checkup?")} :{" "}
             <span className="text-slate-600 font-bold">
-            {historyDetails && historyDetails.checkup===1?"Within the past year":""
-              && historyDetails.checkup===2?"Within the past 2 years":""
-              && historyDetails.checkup===3?"Within the past 5 years":""
-              && historyDetails.checkup===4?"5 or more years ago":""
-              && historyDetails.checkup===0?"Never":""}
+              {historyDetails &&
+                (historyDetails.checkup === 1
+                  ? t('within the past year')
+                  : historyDetails.checkup === 2
+                  ? t('within the past 2 years')
+                  : historyDetails.checkup === 3
+                  ? t('within the past 5 years')
+                  : historyDetails.checkup === 4
+                  ? t('5 or more years ago')
+                  : historyDetails.checkup === 0
+                  ? t('never')
+                  : '')}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
-            {t("How tall are you? ")} :{" "}
+            {t("How tall are you? (cm)")} :{" "}
             <span className="text-slate-600 font-bold">
               {historyDetails && historyDetails.height}
             </span>

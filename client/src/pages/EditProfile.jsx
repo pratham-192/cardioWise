@@ -252,7 +252,7 @@ const EditProfile = () => {
                           {history.CVDScore===-1?"Not calculated":history.CVDScore}
                         </p>
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                          CVD Score
+                          {t("cvd score")}
                         </p>
                       </div>
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">
@@ -270,7 +270,7 @@ const EditProfile = () => {
                               </p>
                             )}
                           </p>
-                          <p>{history.CVDScore>0.5?"dangerous":"okay"}</p>
+                          <p>{history.CVDScore>0.5?t("dangerous"):t("okay")}</p>
                         </div>
                       </div>
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">

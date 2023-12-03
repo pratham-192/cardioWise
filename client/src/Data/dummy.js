@@ -469,7 +469,7 @@ export const links = [
         allowed: ["admin"]
       },
       {
-        name: 'CVD',
+        name: 'cvd',
         icon: <IoMdContacts />,
         allowed: ["admin","user"]
       },
@@ -497,11 +497,11 @@ export const links = [
       //   icon: <BsKanban />,
       //   allowed: [ "case-manager", "worker"]
       // },
-      {
-        name: 'chat-bot',
-        icon: <BsRobot />,
-        allowed: ["admin", "user"]
-      },
+      // {
+      //   name: 'chat-bot',
+      //   icon: <BsRobot />,
+      //   allowed: ["admin", "user"]
+      // },
       // {
       //   name: 'calendar',
       //   icon: <SlCalender />,

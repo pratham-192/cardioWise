@@ -90,7 +90,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
       ) : (
         ""
       )} */}
-      <Header title={t("User Details")} />
+      <Header title={t("user details")} />
       <div className="p-8 bg-white mt-16 rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div className="grid grid-cols-2 text-center order-last md:order-first mt-20 md:mt-0">
@@ -136,13 +136,13 @@ const [workerJoinDate, setworkerJoinDate] = useState()
               <p className="font-bold text-gray-700 text-xl">
                 {workerDetails && workerDetails.contactNo}
               </p>
-              <p className="text-gray-400">{t("Contact No")}</p>
+              <p className="text-gray-400">{t("contact no")}</p>
             </div>
             <div>
               <p className="font-bold text-gray-700 text-xl">
                 {workerDetails && workerDetails.CVDScore}
               </p>
-              <p className="text-gray-400">{t("CVDScore")}</p>
+              <p className="text-gray-400">{t("cvd score")}</p>
             </div>
           </div>
           {/* <div className="space-x-8 flex justify-around mt-32 md:mt-0 md:justify-center">
@@ -174,7 +174,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
         </div>
         <div className="mt-12 flex flex-col justify-center">
           {workerDetails ? (
-            <div className="pl-3 text-lg font-bold">{t("Other details")}</div>
+            <div className="pl-3 text-lg font-bold">{t("other details")}</div>
           ) : (
             ""
           )}
@@ -187,7 +187,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                     <div className="flex items-center space-x-4 capitalize">
                   
                       <div className="flex-1 min-w-0 ">
-                      <p className="text-gray-400">{t("aadharCardNo")}</p>
+                      <p className="text-gray-400">{t("aadhar card no")}</p>
                         <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                           {workerDetails.aadharCardNo}
                         </p>
@@ -221,7 +221,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                     <div className="flex items-center space-x-4 capitalize">
                   
                     <div className="flex-1 min-w-0 ">
-                      <p className="text-gray-400">{t("Join Date")}</p>
+                      <p className="text-gray-400">{t("join date")}</p>
                         <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                           {workerJoinDate}
                         </p>
@@ -239,7 +239,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
           {workerDetails &&
           cvdHistory &&
           cvdHistory.length ? (
-            <div className="pl-3 text-lg font-bold">{t("History")}</div>
+            <div className="pl-3 text-lg font-bold">{t("history")}</div>
           ) : (
             ""
           )}
@@ -260,7 +260,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                           {history.CVDScore===-1?"Not calculated":history.CVDScore}
                         </p>
                         <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                          CVD Score
+                          {t("cvd score")}
                         </p>
                       </div>
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">
@@ -278,7 +278,7 @@ const [workerJoinDate, setworkerJoinDate] = useState()
                               </p>
                             )}
                           </p>
-                          <p>{history.CVDScore>0.5?"dangerous":"okay"}</p>
+                          <p>{history.CVDScore>0.5?t("dangerous"):t("okay")}</p>
                         </div>
                       </div>
                       <div className="inline-flex items-center text-sm text-base font-semibold text-gray-900 dark:text-white">

@@ -90,7 +90,7 @@ const CvdPredictionForm = () => {
 
     return (
         <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-            <Header title={t("CVD Prediction Form")} />
+            <Header title={t("cvd prediction form")} />
             <div>
                 {openPopUp ? (
                     <PopUp
@@ -120,12 +120,12 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setGeneralHealth(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="5">Very Good</option>
-                                                <option value="4">Good</option>
-                                                <option value="3">excellent</option>
-                                                <option value="2">Fair</option>
-                                                <option value="1">Poor</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="5">{t("very good")}</option>
+                                                <option value="4">{t("good")}</option>
+                                                <option value="3">{t("excellent")}</option>
+                                                <option value="2">{t("fair")}</option>
+                                                <option value="1">{t("poor")}</option>
                                             </select>
                                         </div>
                                         {/* Add more form fields for other cardiovascular disease prediction data */}
@@ -140,27 +140,12 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setExercise(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
-                                        {/* <div className="md:col-span-5">
-                                            <label htmlFor="heartDisease">{t("Heart Disease")}</label>
-                                            <span className="text-red-500 pl-1">*</span>
-                                            <select
-                                                name="heartDisease"
-                                                id="heartDisease"
-                                                className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                                                value={heartDisease}
-                                                onChange={(e) => setHeartDisease(e.target.value)}
-                                                required
-                                            >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div> */}
+                                        
                                         <div className="md:col-span-5">
                                             <label htmlFor="heartDisease">{t("(Ever told) (you had) skin cancer?")}</label>
                                             <span className="text-red-500 pl-1">*</span>
@@ -172,9 +157,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setSkinCancer(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
@@ -188,9 +173,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setOtherCancer(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
@@ -204,9 +189,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setDepression(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
@@ -220,9 +205,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setDiabetes(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                                 {/* <option value="0">No, pre-diabetes or borderline diabetes</option> */}
                                                 {/* <option value="1">Yes, but female told only during pregnancy</option> */}
 
@@ -239,9 +224,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setArthritis(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
@@ -255,9 +240,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setSex(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="0">Male</option>
-                                                <option value="1">Female</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
 
                                             </select>
                                         </div>
@@ -272,7 +257,7 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setAgeCategory(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
+                                                <option value="" disabled>{t("Select")}</option>
                                                 <option value="18-24">18-24 </option>
                                                 <option value="25-29">25-29 </option>
                                                 <option value="30-34">30-34 </option>
@@ -300,9 +285,9 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setSmokingHistory(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("yes")}</option>
+                                                <option value="0">{t("no")}</option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
@@ -316,12 +301,12 @@ const CvdPredictionForm = () => {
                                                 onChange={(e) => setCheckup(e.target.value)}
                                                 required
                                             >
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Within the past year </option>
-                                                <option value="2">Within the past 2 years </option>
-                                                <option value="3">Within the past 5 years </option>
-                                                <option value="4">5 or more years ago </option>
-                                                <option value="0">Never </option>
+                                                <option value="" disabled>{t("Select")}</option>
+                                                <option value="1">{t("within the past year" )}</option>
+                                                <option value="2">{t("within the past 2 years" )}</option>
+                                                <option value="3">{t("within the past 5 years")} </option>
+                                                <option value="4">{t("5 or more years ago") }</option>
+                                                <option value="0">{t("never")} </option>
                                             </select>
                                         </div>
                                         <div className="md:col-span-5">
