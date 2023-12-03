@@ -67,7 +67,7 @@ const Employees = () => {
         <ColumnsDirective>
           <ColumnDirective
             field="email"
-            headerText={t("email")}
+            headerText={t("Email")}
             format="C2"
             isPrimaryKey={true}
             width="100"
