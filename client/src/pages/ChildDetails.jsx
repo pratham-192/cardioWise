@@ -211,7 +211,7 @@ setHistoryDetails(response.data.response);
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">
             {t("Sex")} :{" "}
             <span className="text-slate-600 font-bold">
-              {historyDetails && historyDetails.sex===1?t("yes"):t("no")}
+              {historyDetails && historyDetails.sex===1?t("female"):t("male")}
             </span>
           </p>
           <p className="text-gray-800 font-light p-1 lg:mx-16 border-b-2 py-4">

@@ -241,8 +241,8 @@ const CvdPredictionForm = () => {
                                                 required
                                             >
                                                 <option value="" disabled>{t("Select")}</option>
-                                                <option value="1">{t("yes")}</option>
-                                                <option value="0">{t("no")}</option>
+                                                <option value="0">{t("male")}</option>
+                                                <option value="1">{t("female")}</option>
 
                                             </select>
                                         </div>
