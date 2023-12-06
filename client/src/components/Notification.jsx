@@ -18,13 +18,11 @@ const Notification = () => {
   };
 
   useEffect(async () => {
-    if(user.category==="user"){
-      const response = await axios.get(
-        "https://cvd-server.onrender.com/users/get_messages",
-        
-      );
-      setmessages(response.data.response);
-    }
+    const response = await axios.get(
+      "https://cvd-server.onrender.com/users/get_messages",
+
+    );
+    setmessages(response.data.response.slice(0.4));
   }, []);
 
   return (
@@ -52,41 +50,43 @@ const Notification = () => {
       </div>
       <div className="mt-5 ">
         {messages?.map((message, index) => {
-          return (
-            <div
-              key={index}
-              className="flex items-center leading-8 gap-5 border-b-1 border-color p-3"
-            >
-              <div>
-                <p className="font-semibold dark:text-gray-200">
-                  {message.content}
-                </p>
-               
-                <p className="text-gray-500 text-sm dark:text-gray-400">
-                  {new Date(message.createdAt).toLocaleTimeString("en-GB", {
-                    hour: "numeric",
-                    minute: "numeric",
-                  })}
-                </p>
-              </div>
+        return (
+          <div
+            key={index}
+            className="flex items-center leading-8 gap-5 border-b-1 border-color p-3"
+          >
+            <div>
+              <p className="font-semibold dark:text-gray-200">
+                {message.content}
+              </p>
+              <p className="text-gray-500 text-sm dark:text-gray-400">
+                {message.from_user.name}
+              </p>
+              <p className="text-gray-500 text-sm dark:text-gray-400">
+                {new Date(message.createdAt).toLocaleTimeString("en-GB", {
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </p>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
         <div className="mt-5" onClick={() => seeAllMessageHandler()}>
-          {user.category==="admin"?(<Button
+          {user.category === "admin" ? (<Button
             color="white"
             bgColor={currentColor}
             text={t("send notification")}
             borderRadius="10px"
             width="full"
-          />):(<Button
+          />) : (<Button
             color="white"
             bgColor={currentColor}
             text={t("see all notification")}
             borderRadius="10px"
             width="full"
           />)}
-          
+
         </div>
       </div>
     </div>
