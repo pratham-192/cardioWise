@@ -165,5 +165,13 @@
   "dangerous": "खतरनाक",
   "okay": "ठीक है",
   "copyright": "सभी अधिकार CardioWise द्वारा सुरक्षित",
-  "Sign Up": "साइन अप"
+  "Sign Up": "साइन अप",
+  "Notifications Sent": "भेजे गए सूचनाएं",
+  "Notifications Received": "प्राप्त की गई सूचनाएं",
+  "Your CVD History": "आपका सीवीडी इतिहास",
+  "send notification": "सूचना भेजें",
+  "content": "सामग्री",
+  "submit": "सबमिट करें",
+  "see all notifications": "सभी सूचनाएं देखें"
+
 }

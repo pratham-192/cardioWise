@@ -474,7 +474,7 @@ export const links = [
         allowed: ["admin","user"]
       },
       {
-        name: 'History',
+        name: 'history',
         icon: <IoMdContacts />,
         allowed: ["admin","user"]
       },

@@ -11,19 +11,20 @@ const Notification = () => {
   const { t } = useTranslation();
   const [messages, setmessages] = useState();
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const seeAllMessageHandler = async () => {
-    navigate("/messages");
+    navigate("/notifications");
   };
 
   useEffect(async () => {
-    const response = await axios.post(
-      "https://cvd-server.onrender.com/users/getunseenmsgs",
-      {
-        to_user_id: JSON.parse(localStorage.getItem("userDetails"))._id,
-      }
-    );
-    setmessages(response.data.response);
+    if(user.category==="user"){
+      const response = await axios.get(
+        "https://cvd-server.onrender.com/users/get_messages",
+        
+      );
+      setmessages(response.data.response);
+    }
   }, []);
 
   return (
@@ -60,9 +61,7 @@ const Notification = () => {
                 <p className="font-semibold dark:text-gray-200">
                   {message.content}
                 </p>
-                <p className="text-gray-500 text-sm dark:text-gray-400">
-                  {message.from_user.name}
-                </p>
+               
                 <p className="text-gray-500 text-sm dark:text-gray-400">
                   {new Date(message.createdAt).toLocaleTimeString("en-GB", {
                     hour: "numeric",
@@ -74,13 +73,20 @@ const Notification = () => {
           );
         })}
         <div className="mt-5" onClick={() => seeAllMessageHandler()}>
-          <Button
+          {user.category==="admin"?(<Button
             color="white"
             bgColor={currentColor}
-            text={t("See all notifications")}
+            text={t("send notifications")}
             borderRadius="10px"
             width="full"
-          />
+          />):(<Button
+            color="white"
+            bgColor={currentColor}
+            text={t("see all notification")}
+            borderRadius="10px"
+            width="full"
+          />)}
+          
         </div>
       </div>
     </div>

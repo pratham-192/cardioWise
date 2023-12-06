@@ -35,11 +35,11 @@ export default function MessagePopUp({
               <AiFillMessage size={20} />
             </div>
             <div className="mt-3 text-center font-semibold">
-              {t("Send notification")} 
+              {t("send notification")} 
             </div>
             <div className="mt-3 sm:mt-5">
               <label htmlFor="full_name" className="text-sm">
-                {t("Content")}
+                {t("content")}
               </label>
               <textarea
                 rows="5"
@@ -55,7 +55,7 @@ export default function MessagePopUp({
               className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 sm:text-sm"
               onClick={() => sendMessageHandler()}
             >
-              {t("Send Message")}
+              {t("submit")}
             </button>
           </div>
         </div>

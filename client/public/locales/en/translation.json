@@ -165,5 +165,13 @@
   "join date": "Join Date",
   "dangerous": "Dangerous",
   "okay": "Okay",
-  "copyright": "All rights reserved by CardioWise"
+  "copyright": "All rights reserved by CardioWise",
+  "Notifications Sent": "Notifications Sent",
+  "Notifications Received": "Notifications Received",
+  "Your CVD History": "Your CVD History",
+  "send notification": "Send Notification",
+  "content": "Content",
+  "submit": "Submit",
+  "see all notifications": "See All Notifications"
+  
 }

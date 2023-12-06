@@ -36,9 +36,9 @@ const Messages = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl capitalize">
       {user.category === "admin" ? (
-        <Header category={t("Apps")} title={t("Messages Sent")} />
+        <Header category={t("Apps")} title={t("Notifications Sent")} />
       ) : (
-        <Header category={t("Apps")} title={t("Messages Received")} />
+        <Header category={t("Apps")} title={t("Notifications Received")} />
       )}
       
       {openMessagePopUp ? (
@@ -66,7 +66,7 @@ const Messages = () => {
               className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
               onClick={() => setopenMessagePopUp(true)}
             >
-              {t("Message")}
+              {t("send notification")}
             </button>
             
           </div>):("")}
