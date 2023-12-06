@@ -76,7 +76,7 @@ const Notification = () => {
           {user.category==="admin"?(<Button
             color="white"
             bgColor={currentColor}
-            text={t("send notifications")}
+            text={t("send notification")}
             borderRadius="10px"
             width="full"
           />):(<Button

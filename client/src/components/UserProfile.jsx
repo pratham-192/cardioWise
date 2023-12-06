@@ -98,7 +98,7 @@ const UserProfile = () => {
         </div>
         <div
           className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]"
-          onClick={() => navigate("/progress")}
+          onClick={() => navigate("/notifications")}
         >
           <button
             type="button"
@@ -107,10 +107,10 @@ const UserProfile = () => {
             <BsFillInboxesFill size={23} />
           </button>
           <div>
-            <p className="font-semibold dark:text-gray-200 ">{t("My Tasks")}</p>
+            <p className="font-semibold dark:text-gray-200 ">{t("My Notifications")}</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">
               {" "}
-              {t("To-do and Daily Tasks")}
+              {t("Daily health updates")}
             </p>
           </div>
         </div>
