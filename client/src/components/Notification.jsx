@@ -22,7 +22,7 @@ const Notification = () => {
       "https://cvd-server.onrender.com/users/get_messages",
 
     );
-    setmessages(response.data.response.slice(0.4));
+    setmessages(response.data.response.slice(0,4));
   }, []);
 
   return (
