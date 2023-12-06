@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import PopUp from "../components/Modal/PopUp";
 import { adminRoute, managerRoute } from "../Contexts/ProtectedRoute";
 
-const WorkerDetails = () => {
+const UserDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const workerId = location.search.substring(4);
@@ -295,4 +295,4 @@ const [workerJoinDate, setworkerJoinDate] = useState()
   );
 };
 
-export default adminRoute(WorkerDetails);
+export default adminRoute(UserDetails);

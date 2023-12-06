@@ -423,4 +423,4 @@ const CvdPredictionForm = () => {
     );
 };
 
-export default (CvdPredictionForm);
+export default protectedRoute(CvdPredictionForm);

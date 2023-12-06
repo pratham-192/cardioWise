@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
@@ -8,8 +8,8 @@ import './App.css';
 import './i18n'
 
 import { useStateContext } from './Contexts/ContextProvider';
-import ChildDetails from './pages/ChildDetails';
-import WorkerDetails from './pages/WorkerDetails';
+import CvdDetails from './pages/CvdDetails';
+import UserDetails from './pages/UserDetails';
 import History from './pages/history';
 // import { Calendar } from './pages';
 import Messages from './pages/Messages';
@@ -80,18 +80,11 @@ const App = () => {
                 <Route path="/edit-profile" element={<EditProfile />} />
                 <Route path="/chat-bot" element={(<ChatBot />)} />
                 <Route path="/forgot-password" element={(<ForgotPassword />)} />
-                {/* <Route path="/analytics" element={(<Analytics />)} /> */}
                 <Route path="/users" element={<Employees />} />
-                <Route path="/user-details" element={<WorkerDetails />} />
+                <Route path="/user-details" element={<UserDetails />} />
                 <Route path="/cvd" element={<CvdPredictionForm />} />
-                {/* <Route path="/manage-data" element={<ManageData />} /> */}
-                {/* <Route path="/cases" element={<Cases />} /> */}
-                {/* <Route path="/progress" element={<Kanban />} /> */}
-                
-                {/* <Route path="/child-alloted" element={<ChildAlloted />} /> */}
-                <Route path="/cvd-details" element={<ChildDetails />} />
-                {/* <Route path="/flow-management" element={<FlowManagement />} /> */}
-                {/* <Route path="/messages" element={<Messages />} /> */}
+                <Route path="/cvd-details" element={<CvdDetails />} />
+                <Route path="/*" element={<Navigate to="/cvd" />} />
               </Routes>
             </div>
             <Footer />

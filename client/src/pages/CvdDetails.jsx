@@ -8,9 +8,10 @@ import axios from "axios";
 import PopUp from "../components/Modal/PopUp";
 import { useTranslation } from "react-i18next";
 import { MdDelete } from "react-icons/md";
+import { protectedRoute } from "../Contexts/ProtectedRoute";
 // import ConfirmPopUp from "../components/Modal/ConfirmPopUp";
 
-const ChildDetails = () => {
+const CvdDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const historyId = location.search.substring(4);
@@ -261,4 +262,4 @@ setHistoryDetails(response.data.response);
   );
 };
 
-export default ChildDetails;
+export default protectedRoute(CvdDetails);
