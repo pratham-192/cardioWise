@@ -18,7 +18,7 @@ const Messages = () => {
     if (!user) return;
     if (user.category === "admin") {
       const response = await axios.post(
-        "http://localhost:3000/users/message/get_message",
+        "https://cvd-server.onrender.com/users/message/get_message",
         {
           from_user_id: user._id,
         }
@@ -27,7 +27,7 @@ const Messages = () => {
     } else {
      
       const response = await axios.get(
-        "http://localhost:3000/users/get_messages",
+        "https://cvd-server.onrender.com/users/get_messages",
       );
       setallMessages(response.data.response);
     }

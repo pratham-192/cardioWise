@@ -13,7 +13,7 @@ export default function MessagePopUp({
   const { t } = useTranslation();
 
   const sendMessageHandler = async () => {
-    await axios.post("http://localhost:3000/users/message/create", {
+    await axios.post("https://cvd-server.onrender.com/users/message/create", {
       content: message,
       from_user_id: JSON.parse(localStorage.getItem("userDetails"))._id,
     });
