@@ -456,7 +456,7 @@ module.exports.getMessagebyAdmin=async function(req,res){
         let messages = await Message.find({ from_user: req.body.from_user_id }).populate({
             path: 'from_user',
             select: 'name category'
-        });
+        }).sort({ createdAt: -1 });
         return res.status(200).json({
             response: messages
         })
@@ -470,7 +470,7 @@ module.exports.getMessages = async function (req, res) {
         let messages = await Message.find({}).populate({
             path: 'from_user',
             select: 'name category'
-        });
+        }).sort({ createdAt: -1 });
         return res.status(200).json({
             response: messages
         })

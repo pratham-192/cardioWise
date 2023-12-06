@@ -473,6 +473,11 @@ export const links = [
         icon: <IoMdContacts />,
         allowed: ["admin","user"]
       },
+      {
+        name: 'History',
+        icon: <IoMdContacts />,
+        allowed: ["admin","user"]
+      },
       // {
       //   name: 'cases',
       //   icon: <RiContactsLine />,

@@ -10,7 +10,7 @@ import './i18n'
 import { useStateContext } from './Contexts/ContextProvider';
 import ChildDetails from './pages/ChildDetails';
 import WorkerDetails from './pages/WorkerDetails';
-// import FlowManagement from './pages/FlowManagement';
+import History from './pages/history';
 // import { Calendar } from './pages';
 import Messages from './pages/Messages';
 import ForgotPassword from './pages/ForgotPassword';
@@ -74,7 +74,7 @@ const App = () => {
 
               <Routes>
                 <Route path="/notifications" element={(<Messages />)} />
-                {/* <Route path="/calendar" element={(<Calendar />)} /> */}
+                <Route path="/history" element={(<History />)} />
                 <Route path="/login" element={(<Login />)} />
                 <Route path="/signup" element={(<SignUp />)} />
                 <Route path="/edit-profile" element={<EditProfile />} />
