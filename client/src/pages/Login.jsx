@@ -64,7 +64,7 @@ function Login() {
   onSuccess={async (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
-      console.log(decoded);
+      // console.log(decoded);
 
       const response2 = await axios.post(
         `https://cvd-server.onrender.com/users/get_user_google`,
@@ -73,7 +73,7 @@ function Login() {
           name: decoded.given_name,
         }
       );
-      console.log(response2);
+      // console.log(response2);
       if (response2.data.email) {
         localStorage.setItem("userDetails", JSON.stringify(response2.data));
         navigate("/cvd");

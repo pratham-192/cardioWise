@@ -12,7 +12,7 @@ import ChildDetails from './pages/ChildDetails';
 import WorkerDetails from './pages/WorkerDetails';
 // import FlowManagement from './pages/FlowManagement';
 // import { Calendar } from './pages';
-// import Messages from './pages/Messages';
+import Messages from './pages/Messages';
 import ForgotPassword from './pages/ForgotPassword';
 // import ManageData from './pages/ManageData';
 import ChatBot from './pages/ChatBot';
@@ -73,7 +73,7 @@ const App = () => {
               {themeSettings && (<ThemeSettings />)}
 
               <Routes>
-                {/* <Route path="/" element={(<Messages />)} /> */}
+                <Route path="/notifications" element={(<Messages />)} />
                 {/* <Route path="/calendar" element={(<Calendar />)} /> */}
                 <Route path="/login" element={(<Login />)} />
                 <Route path="/signup" element={(<SignUp />)} />

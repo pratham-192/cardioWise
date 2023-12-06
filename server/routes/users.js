@@ -46,5 +46,10 @@ router.post('/cvd_prediction',userController.cvdPrediction);
 router.post('/cvd_history',userController.cvdHistory);
 router.post('/cvd_report',userController.cvdReport);
 router.post('/chat',userController.chat);
+router.post('/message/get_message',userController.getMessagebyAdmin);
+
+router.post('/message/create',userController.createMessage);
+router.get('/get_messages',userController.getMessages);
+
 // router.post('/createsessionjwt',authentication.createSession);
 module.exports=router;

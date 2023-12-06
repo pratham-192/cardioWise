@@ -1,6 +1,6 @@
 const User = require('../models/user');
 // const Child = require('../models/child');
-// const Message = require('../models/message');
+const Message = require('../models/message');
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const axios = require('axios');
@@ -448,5 +448,46 @@ module.exports.chat = async function (req, res) {
     } catch (err) {
         console.log(err);
         return res.status(200).send("error in chat");
+    }
+}
+
+module.exports.getMessagebyAdmin=async function(req,res){
+    try{
+        let messages = await Message.find({ from_user: req.body.from_user_id }).populate({
+            path: 'from_user',
+            select: 'name category'
+        });
+        return res.status(200).json({
+            response: messages
+        })
+    }catch(err){
+        console.log(err);
+        return res.status(200).send("error in getting messages of admin");
+    }
+}
+module.exports.getMessages = async function (req, res) {
+    try {
+        let messages = await Message.find({}).populate({
+            path: 'from_user',
+            select: 'name category'
+        });
+        return res.status(200).json({
+            response: messages
+        })
+    } catch (err) {
+        return res.status(200).send("error in getting messages");
+    }
+}
+module.exports.createMessage=async function(req,res){
+    try{
+        let message=await Message.create({
+            from_user:req.body.from_user_id,
+            content:req.body.content
+        });
+        return res.status(200).send({
+            response:message
+        })
+    }catch(err){
+        return res.status(200).send("error in creating message");
     }
 }
